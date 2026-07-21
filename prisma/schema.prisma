@@ -48,57 +48,57 @@ enum NotificationType {
 }
 
 model User {
-  id              String    @id   @default(cuid())
-  name            String
-  email           String    @unique
-  passwordHashed  String    
-  role            Role    @default(STUDENT)
-  createdAt       DateTime  @default(now())
+  id             String   @id @default(cuid())
+  name           String
+  email          String   @unique
+  passwordHashed String
+  role           Role     @default(STUDENT)
+  createdAt      DateTime @default(now())
 
-  student         Student?
-  teacher         Teacher?
-  admin           Admin? 
-  notifications   Notification[]   
+  student       Student?
+  teacher       Teacher?
+  admin         Admin?
+  notifications Notification[]
 }
 
 model Student {
-  id                String  @id  @default(cuid())
-  userId            String       @unique
-  enrollmentNumber  String       @unique
-  department        String
-  year              Int
-  section           String   
+  id               String @id @default(cuid())
+  userId           String @unique
+  enrollmentNumber String @unique
+  department       String
+  year             Int
+  section          String
 
-  user              User  @relation(fields: [userId], references: [id], onDelete: Cascade)
-  enrollments       Enrollment[]
-  attendance        Attendance[]
-  grades            Grade[]
-  predictions       Prediction[]
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  enrollments Enrollment[]
+  attendance  Attendance[]
+  grades      Grade[]
+  predictions Prediction[]
 }
 
 model Teacher {
-  id              String  @id  @default(cuid())
-  userId          String  @unique
-  department      String
-  subjectsTaught  String[]
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  department     String
+  subjectsTaught String[]
 
-  user            User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  courses         Course[]
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courses Course[]
 }
 
 model Admin {
-  id      String @id @default(cuid())
-  userId  String @unique
+  id     String @id @default(cuid())
+  userId String @unique
 
-  user    User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Course {
-  id          String @id @default(cuid())
-  name        String
-  code        String @unique
-  teacherId   String
-  semester    String
+  id        String @id @default(cuid())
+  name      String
+  code      String @unique
+  teacherId String
+  semester  String
 
   teacher     Teacher      @relation(fields: [teacherId], references: [id], onDelete: Cascade)
   enrollments Enrollment[]
@@ -112,8 +112,8 @@ model Enrollment {
   studentId String
   courseId  String
 
-  student   Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
-  course    Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  course  Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
   @@unique([studentId, courseId])
 }
@@ -165,6 +165,6 @@ model Notification {
   type      NotificationType
   isRead    Boolean          @default(false)
   createdAt DateTime         @default(now())
-  
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
