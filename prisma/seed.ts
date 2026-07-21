@@ -9,6 +9,7 @@ const adapter = new PrismaPg({
 const prisma = new PrismaClient({
   adapter,
 });
+
 async function main() {
   const adminUser = await prisma.user.create({
     data: {
