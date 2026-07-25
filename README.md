@@ -39,7 +39,7 @@ Next.js 14 (App Router) → PostgreSQL (Neon via Prisma) → FastAPI ML Service 
 ## Local Setup
 
 \`\`\`bash
-git clone https://github.com/YOUR_USERNAME/student-performance-platform
+git clone https://github.com/aakashmane15/student-performance-platform
 cd student-performance-platform/web
 cp .env.example .env.local # fill in Neon credentials
 npx prisma migrate dev
