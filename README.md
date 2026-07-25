@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Student Performance Analytics Platform
 
-## Getting Started
+### Predictive Analytics for Student Performance Tracking — SIH25205
 
-First, run the development server:
+> An AI-powered EdTech platform that predicts student academic risk early
+> and explains _why_ — using SHAP — so teachers can act, not just observe.
 
-```bash
+## Status: Active Development (Sprint 1 of 4)
+
+## Demo Accounts (seed data)
+
+| Role    | Email            | Password |
+| ------- | ---------------- | -------- |
+| Admin   | admin@demo.com   | demo123  |
+| Teacher | teacher@demo.com | demo123  |
+| Student | student@demo.com | demo123  |
+
+## Architecture
+
+Next.js 14 (App Router) → PostgreSQL (Neon via Prisma) → FastAPI ML Service (Python)
+
+## Key Features (planned)
+
+- 3 ML models: grade prediction, pass/fail risk, dropout risk
+- SHAP explainability — per-student, feature-level risk explanation
+- Role-based dashboards: Admin, Teacher, Student
+- Vacation/Break Planner — burnout detection from performance data
+- Real-time notifications for at-risk students
+
+## Tech Stack
+
+- Frontend: Next.js 14, TypeScript, Tailwind CSS, ShadCN UI, Recharts
+- Backend: Next.js API Routes, Prisma v5, PostgreSQL (Neon)
+- ML: Python, scikit-learn, XGBoost, SHAP, FastAPI
+- Auth: NextAuth.js (RBAC — 3 roles)
+- Cache: Redis (Upstash)
+- Deploy: Vercel + Railway
+
+## Local Setup
+
+\`\`\`bash
+git clone https://github.com/YOUR_USERNAME/student-performance-platform
+cd student-performance-platform/web
+cp .env.example .env.local # fill in Neon credentials
+npx prisma migrate dev
+npx prisma db seed
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# In a separate terminal:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+cd ml_service
+pip install -r requirements.txt
+python train_basic.py
+uvicorn main:app --reload
+\`\`\`
