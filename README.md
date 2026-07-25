@@ -3,7 +3,7 @@
 ### Predictive Analytics for Student Performance Tracking
 
 > An AI-powered EdTech platform that predicts student academic risk early
-> and explains _why_ — using SHAP — so teachers can act, not just observe.
+> and explains _why_ using SHAP so teachers can act, not just observe.
 
 ![Status](https://img.shields.io/badge/Status-Active%20Development-blue)
 
