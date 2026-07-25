@@ -1,11 +1,11 @@
 # Student Performance Analytics Platform
 
-### Predictive Analytics for Student Performance Tracking — SIH25205
+### Predictive Analytics for Student Performance Tracking
 
 > An AI-powered EdTech platform that predicts student academic risk early
 > and explains _why_ — using SHAP — so teachers can act, not just observe.
 
-## Status: Active Development
+![Status](https://img.shields.io/badge/Status-Active%20Development-blue)
 
 ## Demo Accounts (seed data)
 
@@ -17,7 +17,15 @@
 
 ## Architecture
 
-Next.js 14 (App Router) → PostgreSQL (Neon via Prisma) → FastAPI ML Service (Python)
+```mermaid
+graph LR
+    A[Next.js Frontend] --> B[Next.js API]
+    B --> C[Prisma]
+    C --> D[(PostgreSQL)]
+    B --> E[FastAPI ML Service]
+    E --> F[Random Forest]
+    F --> G[Prediction + SHAP]
+```
 
 ## Key Features (planned)
 
@@ -38,18 +46,24 @@ Next.js 14 (App Router) → PostgreSQL (Neon via Prisma) → FastAPI ML Service 
 
 ## Local Setup
 
-\`\`\`bash
-git clone https://github.com/aakashmane15/student-performance-platform
+```bash
+git clone https://github.com/aakashmane15/student-performance-platform.git
 cd student-performance-platform/web
-cp .env.example .env.local # fill in Neon credentials
+
+cp .env.example .env.local
+# Fill in your Neon credentials
+
 npx prisma migrate dev
 npx prisma db seed
 npm run dev
+```
 
-# In a separate terminal:
+## In a separate terminal
 
+```bash
 cd ml_service
+
 pip install -r requirements.txt
 python train_basic.py
 uvicorn main:app --reload
-\`\`\`
+```
