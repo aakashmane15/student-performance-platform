@@ -5,7 +5,7 @@
 > An AI-powered EdTech platform that predicts student academic risk early
 > and explains _why_ — using SHAP — so teachers can act, not just observe.
 
-## Status: Active Development (Sprint 1 of 4)
+## Status: Active Development
 
 ## Demo Accounts (seed data)
 
