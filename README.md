@@ -30,9 +30,9 @@ graph LR
 ## Key Features (planned)
 
 - 3 ML models: grade prediction, pass/fail risk, dropout risk
-- SHAP explainability — per-student, feature-level risk explanation
+- SHAP explainability: per-student, feature-level risk explanation
 - Role-based dashboards: Admin, Teacher, Student
-- Vacation/Break Planner — burnout detection from performance data
+- Vacation/Break Planner: burnout detection from performance data
 - Real-time notifications for at-risk students
 
 ## Tech Stack
