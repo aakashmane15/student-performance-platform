@@ -1,5 +1,38 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+ml_service/venv/
+
+# ML models
+ml_service/models/
+
+# Dataset
+ml_service/data/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Node
+node_modules/
+
+# Next.js
+.next/
+
+# Environment variables
+.env
+.env.local
+
+# Logs
+*.log
+
 # dependencies
 /node_modules
 /.pnp
