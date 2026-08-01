@@ -16,3 +16,18 @@ export const POST = withErrorHandling(async (req) => {
 
   return NextResponse.json({ created: created.length }, { status: 201 });
 });
+
+export const GET = withErrorHandling(async (req) => {
+  await requireRole(["ADMIN", "TEACHER"]);
+
+  const { searchParams } = new URL(req.url);
+  const courseId = searchParams.get("courseId");
+
+  const grades = await prisma.grade.findMany({
+    where: { ...(courseId ? { courseId } : {}) },
+    include: { student: { include: { user: { select: { name: true } } } } },
+    orderBy: { gradedAt: "desc" },
+  });
+
+  return NextResponse.json({ grades });
+});
