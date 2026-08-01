@@ -21,7 +21,7 @@ export async function requireAuth() {
 export async function requireRole(roles: string[]) {
   const session = await requireAuth();
   if (!roles.includes(session.user.role!)) {
-    throw new ApiError("Forbidden — insufficient permissions", 403);
+    throw new ApiError("Forbidden - Insufficient permissions", 403);
   }
   return session;
 }
