@@ -30,5 +30,13 @@ export default auth((req) => {
 });
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/api/((?!auth).*)"],
+  matcher: [
+    "/dashboard/:path*",
+    "/api/students/:path*",
+    "/api/courses/:path*",
+    "/api/grades/:path*",
+    "/api/attendance/:path*",
+    "/api/predictions/:path*",
+    "/api/notifications/:path*",
+  ],
 };
